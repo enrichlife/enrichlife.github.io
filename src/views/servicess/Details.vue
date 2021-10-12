@@ -1,7 +1,7 @@
 <template>
   <div class="details">
-    <div v-for="(massage,index) in massages" :key="index">
-      <div class="col-md-12" v-if="massId == massage.id">
+    <div v-for="(advert,index) in adverts" :key="index">
+      <div class="col-md-12" v-if="massId == advert.id">
         <div class="mx-14">
           <v-row no-gutters>
             <v-col
@@ -10,8 +10,8 @@
                 class="pa-2"
               >
                 <img 
-                  v-if="massage.upload" 
-                  :src="massage.upload" 
+                  v-if="advert.upload" 
+                  :src="advert.upload" 
                   class="img-fluid">
             </v-col>
 
@@ -19,18 +19,18 @@
               cols="12"
               md="5"
               class="pa-2"
+              height="35px"
             >
               <div id="info" class="pa-4">
-                <h1 class="mb-5">{{massage.title}}</h1>
+                <h1 class="mb-5">{{advert.title}}</h1>
                 
                 <base-info-card title="Detalhes principais:" />
-                <ul>
+                <ul class="mb-16">
                   <li class="mb-3">
                     <v-icon>
                       access_time
                     </v-icon>
-                    Duração: {{massage.duration}}
-                    <popup @projectAdded="snackbar=true" />
+                    Duração: {{advert.time_project}}
                   </li>
                   <li class="mb-3">
                     <v-icon>
@@ -51,7 +51,117 @@
                     Idiomas disponibilizados: Português, Inglês, Espanhol
                   </li>
                 </ul>
+         <v-row justify="center">
+    <v-dialog
+      v-model="dialog"
+      persistent
+      max-width="600px"
+    >
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          color="primary"
+          dark
+          v-bind="attrs"
+          v-on="on"
+        >
+          Inscreva-se
+        </v-btn>
+      </template>
+      <v-card>
+        <v-card-title>
+          <span class="text-h5">Formulário de Inscrição</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container>
+            
+ <v-row>
+              <v-col
+                cols="12"
+                sm="6"
+                md="4"
+              >
+                <v-text-field
+                v-model="name"
+                  label="Nome"
+                  outlined
+          required
+          dense
+                ></v-text-field>
+              </v-col>
+              
+              <v-col cols="12"
+                sm="6"
+                md="4">
+                <v-text-field
+                  v-model="contact"
+                  label="Contacto"
+                  outlined
+          required
+          dense
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-text-field
+                v-model="email"
+                  label="Email"
+                  outlined
+          required
+          dense
+                ></v-text-field>
+              </v-col>
+              
+              <v-col
+                cols="12"
+                sm="6"
+              >
+                <v-select
+                  :items="['0-17', '18-29', '30-54', '54+']"
+                  label="Idade"
+                  outlined
+          required
+          dense
+                  v-model="age"
+                ></v-select>
+              </v-col>
+              
+              
+      <v-col cols="12">
+       <v-textarea
+          v-model="desc"
+          outlined
+          required
+          dense
+          name="input-7-4"
+          placeholder="Demonstre o seu interesse em concorrer para este voluntariado"
+          label="Descrição"
+      ></v-textarea>
+</v-col>
+            </v-row>
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="blue darken-1"
+            text
+            @click="dialog = false"
+          >
+            Cancelar
+          </v-btn>
+          <v-btn
+            color="blue darken-1"
+            text
+            @click="dialog = false, ins()"
+          >
+            Increver
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </v-row>
               </div>
+
+            
             </v-col>
             
           </v-row>
@@ -64,15 +174,7 @@
               <div id="info" class="pa-6">
                 <base-info-card title="Descrição geral" />
                 <p>
-                 Desde sempre que as massagens foram associadas ao relaxamento, 
-                 contudo as pessoas tendem a perceber que o seu espectro de actuação é 
-                 muito mais vasto e eficiente. Cada vez mais, as pessoas procuram os benefícios 
-                 das massagens por questões de saúde. As massagens começam a ser vistas quase que 
-                 uma medicina preventiva que proporciona efeitos de bem-estar imediatos. 
-                 São incríveis os benefícios das massagens como a redução do ritmo cardíaco 
-                 e da pressão sanguínea e promovendo o aumento da circulação do sangue e da linfa.
-                 A Massagem Stress Less é uma experiência holística intensa que se destina a 
-                 aliviar a tensão muscular e o stress, promovendo o bem-estar geral. 
+                {{advert.description}}
                 </p>
                 <base-info-card class="pt-8" title="A quem se destina" />
                 <p>
@@ -142,7 +244,7 @@
                     <v-icon>
                       https
                     </v-icon>
-                    Código do produto: {{massage.id}}
+                    Código do produto: {{advert.id}}
                   </li>
                 </ul>
               </div>
@@ -160,93 +262,28 @@ export default {
   name: 'details',
   components: {
       BaseInfoCard: () => import('@/components/base/InfoCard'),
-      Popup: () => import('@/components/Popup'),
+     
     },
   data () {
     return {
      title:"Details",
      massId:this.$route.params.Pid,
      snackbar: true,
-     massage:[
-      {
-        massageTitle:"Top 10 Australian beaches",
-        massageSubtitle:"Number 10",
-        presentation: "Whitehaven Beach",
-        description: "Vamos testar os cards",
-        duration: "20min | 40min | 60 min | 80min | 90min | 120min  ",
-        src       : require('@/assets/massage1.jpg'),
-        id:1
-      },
-      {
-        massageTitle:"Top 10 Australian beaches",
-        massageSubtitle:"Number 10",
-        presentation: "Whitehaven Beach",
-        description: "Vamos testar os cards",
-        duration: "25min | 50min | 80min | 110min ",
-        src      : require('@/assets/massage2.jpg'),
-        id:2
-      },
-      {
-        massageTitle:"Top 10 Australian beaches",
-        massageSubtitle:"Number 10",
-        presentation: "Whitehaven Beach",
-        description: "Vamos testar os cards",
-        duration: "20min | 40min | 60 min | 80min | 90min | 120min  ",
-        src       : require('@/assets/massage1.jpg'),
-        id:3
-      },
-      {
-        massageTitle:"Top 10 Australian beaches",
-        massageSubtitle:"Number 10",
-        presentation: "Whitehaven Beach",
-        description: "Vamos testar os cards",
-        duration: "20min | 40min | 60 min | 80min | 90min | 120min  ",
-        src       : require('@/assets/massage1.jpg'),
-        id:4
-      },
-      {
-        massageTitle:"Top 10 Australian beaches",
-        massageSubtitle:"Number 10",
-        presentation: "Whitehaven Beach",
-        description: "Vamos testar os cards",
-        duration: "20min | 40min | 60 min | 80min | 90min | 120min  ",
-        src       : require('@/assets/massage1.jpg'),
-        id:5
-      },
-      {
-        massageTitle:"Top 10 Australian beaches",
-        massageSubtitle:"Number 10",
-        presentation: "Whitehaven Beach",
-        description: "Vamos testar os cards",
-        duration: "20min | 40min | 60 min | 80min | 90min | 120min  ",
-        src       : require('@/assets/massage1.jpg'),
-        id:6
-      },
-      {
-        massageTitle:"Top 10 Australian beaches",
-        massageSubtitle:"Number 10",
-        presentation: "Whitehaven Beach",
-        description: "Vamos testar os cards",
-        duration: "20min | 40min | 60 min | 80min | 90min | 120min  ",
-        src       : require('@/assets/massage1.jpg'),
-        id:7
-      },
-      {
-        massageTitle:"Top 10 Australian beaches",
-        massageSubtitle:"Number 10",
-        presentation: "Whitehaven Beach",
-        description: "Vamos testar os cards",
-        duration: "20min | 40min | 60 min | 80min | 90min | 120min  ",
-        src       : require('@/assets/massage1.jpg'),
-        id:8
-      },
-      ],
-      massages:[],
+     dialog: false,
+     
+     name:'',
+     email:'',
+contact:'',
+desc:'',
+age:'',
+
+      adverts:[],
     }
   },
   created() {
       try{
-        db.collection("massages").get().then((querySnapshot) => {
+
+        db.collection("internacional_volunteer").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           if (doc.data().upload) {
             storage
@@ -254,18 +291,28 @@ export default {
               .child(doc.data().upload)
               .getDownloadURL()
               .then((url) => {
-                this.massages.push({
+
+                db.collection("users").where('uid', '==', doc.data().companyID).get().then((querySnapshot) => {
+                  querySnapshot.forEach((finallydoc) =>{
+                    this.adverts.push({
                   id: doc.id,
                   title: doc.data().title,
-                  shortDescription: doc.data().shortDescription,
+                  companyName: finallydoc.data().username,
+                  location: doc.data().location,
                   upload: url,
+                  description: doc.data().description,
+                  time_project: doc.data().time_project,
+                  })
+                })
+                
                 })
               })
           } else {
-            this.massages.push({
+            this.adverts.push({
               id: doc.id,
-              title: doc.data().title,
-              shortDescription: doc.data().shortDescription,
+
+                  title: doc.data().title,
+                  location: doc.data().location,
             })
           }
 
@@ -275,37 +322,52 @@ export default {
     }catch(e){
       console.log(e)
     }
-     try{
-        db.collection("rehabilitations").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          if (doc.data().upload) {
-            storage
-              .ref()
-              .child(doc.data().upload)
-              .getDownloadURL()
-              .then((url) => {
-                this.rehabilitations.push({
-                  id: doc.id,
-                  title: doc.data().title,
-                  shortDescription: doc.data().shortDescription,
-                  upload: url,
-                })
-              })
-          } else {
-            this.rehabilitations.push({
-              id: doc.id,
-              title: doc.data().title,
-              shortDescription: doc.data().shortDescription,
-            })
-          }
-
-          // end pertinent change
-        })
-      })
-    }catch(e){
-      console.log(e)
-    }
+    
     },
+    methods:{
+      async ins() {
+            try{
+               
+                let data = {
+
+                  name: this.name,
+                      email: this.email,
+                  contact: this.contact,
+                  desc: this.desc,
+                  age: this.age,
+                       
+                        
+                }
+                
+                db.collection("bookings").add(data)
+                    .then((docRef) => {
+
+                
+                     this.name = '',
+                      this.email = '',
+                   this.contact = '',
+                   this.desc = '',
+                  this.age = ''
+
+                        
+                        .then(function() {
+                            console.log("Document successfully updated, Document id :" , docRef.id);
+
+                        })
+                        .catch(function(error) {
+                            // The document probably doesn't exist.
+                            console.error("Error updating document: ", error);
+                        });
+                    })
+                    .catch(function(error) {
+                        console.error("Error writing document: ", error);
+                    });
+                }catch(e){
+               console.log(e)
+           }
+       }
+    }
+    
     
 }
 </script>

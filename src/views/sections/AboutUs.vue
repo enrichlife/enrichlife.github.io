@@ -13,7 +13,7 @@
           class="mx-1"
         >
           <v-img
-            :src="require('@/assets/fisio3.jpg')"
+            :src="require('@/assets/vol2.jpg')"
             height="100%"
             width="100%"
           />
@@ -42,20 +42,8 @@
                   >Bem-vindo/a
               </v-heading>
               <p text-center>
-                Lorem ipsum dolor sit amet, consectetur ad
-                ipiscin elit. Etiam vulputate augue vel felis gra
-                vida porta. Lorem ipsum dolor sit amet, cons
-                ectetur adipiscing elit.<br>
-                Lorem ipsum dolor sit amet, consectetur ad
-                ipiscin elit. Etiam vulputate augue vel felis gra
-                vida porta. Lorem ipsum dolor sit amet, cons
-                ectetur adipiscing elit.
+                Bem vindo, a Enrich Life é uma rede social de voluntariado eletrónico que está dividida em duas partes essenciais, a area da rede social que permite os utilizadores fazerem partilhas de experiencia vividas em projetos de voluntariado e a area do voluntariado eletrónico.                                            
               </p>
-              <router-link to="/e/sobre" style="text-decoration: none">
-                <base-btn class="mt-4">
-                  Saiba mais!
-                </base-btn>
-              </router-link>
             </v-col>
           </v-row>
         </v-col>

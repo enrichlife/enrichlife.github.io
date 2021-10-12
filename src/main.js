@@ -7,6 +7,8 @@ import './scss/main.scss';
 import {fb} from './firebase'
 
 Vue.component('Navbar', require('./layouts/home/Navbar.vue').default);
+
+
 Vue.config.productionTip = false
 
 let app = '';

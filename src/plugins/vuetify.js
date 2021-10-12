@@ -33,7 +33,7 @@ export default new Vuetify({
   theme: {
     themes: {
       light: {
-        primary: '#91c152',
+        primary: '#546a7b',
         secondary: '#424242',
         accent: '#82B1FF',
         error: '#b71c1c',

@@ -9,7 +9,7 @@
         flat
         max-width="100%"
         tile
-      >
+      > 
         <v-row
           v-if="title"
           align="center"
@@ -86,7 +86,7 @@
       },
       items () {
         return [
-          { text: 'HOME', to: '/' },
+          { text: 'Início', to: '/enrichlife' },
           { text: this.title },
         ]
       },

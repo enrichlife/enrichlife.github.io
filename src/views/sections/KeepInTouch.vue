@@ -45,5 +45,18 @@
       'base-info': Info,
     },
     name: 'SectionKeepInTouch',
+
+data() {
+  return {
+    name: '',
+      email: '',
+      message: '',
   }
+},
+// email ainda n funcemina
+//evento on-click n funcemina no botão submeter no form
+//serviços a vir da base de dados- por fazer
+
+  }
+
 </script>

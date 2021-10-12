@@ -17,7 +17,7 @@
         'Header-Info',
         'about-us',
         'services',
-        'footer-info',
+        'testimonials',
         //substituir os componentes por tags, ex: basa-title por h1
       ]),
     ],

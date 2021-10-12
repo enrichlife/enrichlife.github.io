@@ -41,9 +41,11 @@
       <!--expand-on-hover-->
       <v-navigation-drawer
         width="270"
-        app 
+        app
         expand-on-hove
         clipped
+                src="/imgnavbar2.jpg"
+
         v-model="drawer"
         class=" white--text "
       >
@@ -66,7 +68,7 @@
 
         <v-divider></v-divider>
 
-        <v-list nav dense>
+        <v-list nav >
           <!-----INICIO----->
           <v-list-item-group
             color="primary"
@@ -78,22 +80,6 @@
                 </v-list-item-icon>
                 <v-list-item-content>
                   <v-list-item-title>Inicio</v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-          </v-list-item-group>
-          <!------------------>
-
-          <!-----ADICIONAR MASSAGEM----->
-          <v-list-item-group
-            color="primary"
-          >
-          
-              <v-list-item :to="{path: '/user', name: 'addmassage'}">
-                <v-list-item-icon>
-                  <v-icon>home</v-icon>
-                </v-list-item-icon>
-                <v-list-item-content>
-                  <v-list-item-title>Adicionar Massagem</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
           </v-list-item-group>
@@ -120,9 +106,6 @@
           </v-list-item-group>
           <!--------------------------------->
 
-          <!-----------SERVIÇOS------------->
-          
-          <!--------------------------------->
 
           <!-----LOCALIZAÇÃO----->
           <v-subheader>LOCALIZAÇÃO</v-subheader>
@@ -231,8 +214,7 @@ export default {
               ['Delete', 'mdi-delete'],
             ],
             bookings: [
-              { text: 'Agenda', icon: 'event', route:'user/inicio' },
-              { text: 'Histórico', icon: 'history', route:'/' },
+              { text: 'Agenda', icon: 'event', route:'/user/myschedule' },
             ],
             services: [
               { text: 'Massagem', icon: 'spa', route:'/team' },
@@ -240,11 +222,9 @@ export default {
             ],
             account:[
               { text: 'Perfil', icon: 'mdi-account', route:'/user/profile' },
-              { text: 'Privacidade', icon: 'lock', route:'/' },
             ],
             support:[
-              { text: 'Perguntas frequentes', icon: 'help', route:'/team' },
-              { text: 'WhatsApp 927 555 634', icon: 'call', route:'/' },
+              { text: 'Perguntas frequentes', icon: 'help', route:'/user/questions' },
             ],
 
             item: [
@@ -284,7 +264,7 @@ const fileRef = "users/"+user.uid+"/profile.jpg"
         logout(){
             fb.auth().signOut()
             .then(() => {
-                this.$router.replace('/e')
+                this.$router.replace('/biensaude')
                 
             }).catch((err) => {
                 console.log(err);

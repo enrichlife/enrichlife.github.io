@@ -1,4 +1,4 @@
-<template>
+<template v-slot:activator="{ on, attrs }">
   <v-img
     v-bind="$attrs"
     v-on="$listeners"

@@ -1,10 +1,12 @@
 
 <template>
   <section id="headerinfo">
+    <!--<iframe src="https://advancecare.pt/rede-medica-mainhub-conteudos"> ddd</iframe>
+    -->
     
-    <v-img
+    <v-img 
       height="800px"
-      :src="require('@/assets/imgtest1.jpg')"
+      :src="require('@/assets/vol1.jpg')"
       class="white--text"
       gradient="to right, rgba(14,12,11,.71), rgba(14,12,11,.71)"
     >
@@ -15,31 +17,18 @@
           max-width="780"
           width="100%"
         >
-        <h1 class=" display-3"> BIENSAÚDE </h1>
-        <h2 class=" display-1 text-uppercase mb-4">Centro de Massagem e Reabilitação Física</h2>
+        <h1 class=" display-3"> ENRICH LIFE </h1>
               
           <p>
-            Infographic hypotheses influencer user experience Long madel ture gen-z paradigm shift client partner network product seilans solve management influencer analytics leverage virality.
-            incubator seed round massmarket.
-            buyer agile development growth hacking business-to-consumer ecosystem
+              Ninguém pode fazer tudo, mas todo mundo pode fazer alguma coisa.
           </p>
-          <div
-            class="d-flex flex-wrap  align-center"
-          >
-            
-            <v-tab to="/login" class="primary--text text-decoration-underline" >
-            <span >ENTRAR</span> 
-          </v-tab>
+          
+         <!-- <div class="video">
+            <b-embed type='video' auto controls >
+              <source src="@/views/video.mp4" type="video/mp4">
 
-            <span class="font-weight-bold  mr-6 my-4">ou</span>
-
-           <router-link to="/register" style="text-decoration: none">
-              <v-btn >
-               Registar
-            </v-btn>         
-           </router-link>
-
-          </div>
+            </b-embed>
+          </div>-->
         </v-responsive>
       </v-container>
     </v-img>
@@ -48,14 +37,14 @@
 </template>
 
 
-
+'bootstrap'
 <script>
-  import Btn from '@/components/base/Btn.vue'
+  import {BEmbed} from 'bootstrap-vue'
+import Vue from 'vue'
+  Vue.component('b-embed', BEmbed)
   export default {
 
-    components: {
-      'v-btn': Btn
-    },
+   
     name: 'headerinfo',
 
     provide: {

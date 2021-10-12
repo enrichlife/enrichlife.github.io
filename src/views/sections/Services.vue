@@ -1,174 +1,63 @@
 <template>
     <div 
       id="services"  
-      class="py-16 my-16"
+      class="py-16 ma-16"
     >
       
         <v-heading 
           :is="tag"
-          class="display-3 v-heading mb-16 text-center"
+          class="display-2 v-heading mb-14 text-center"
           >
-            Serviços
+            Novidades
         </v-heading>
         <v-row>
-          <v-col cols="12" md="4">
-            <v-card
-               class="mx-auto"
-               max-width="344"
-            >
-              <v-img
-                :src="require('@/assets/massage1.jpg')"
+         
+          
+          <v-col cols="12" md="6">
+           <v-card
+    class="mx-auto"
+    max-width="419px"
+    height="370px"
+  >
+    <v-img
+     class="white--text align-end"
+                :src="require('@/assets/ef_img_nov2.jpg')"
                 height="200px"
               >
-              </v-img>
+    </v-img>
+          <v-card-title class="ml-2 pa-1">Enrich Life App</v-card-title>
 
-              <v-card-title>
-                SPA e Massagens
-              </v-card-title>
 
-              <v-card-subtitle>
-                1,000 miles of wonder
-              </v-card-subtitle>
+    <v-card-text class="text--primary">
+      <div>Já disponivel na sua aplicação móvel todos os anúncios de voluntariado disponiveis a que se pode inscrever!</div>
 
-              <v-card-actions>
-                <v-btn
-                  color="orange lighten-2"
-                  text
-                >
-                  Saiba mais
-                </v-btn>
+    </v-card-text>
 
-                <v-spacer></v-spacer>
-
-                <v-btn
-                  icon
-                  @click="showmassage = !showmassage"
-                >
-                  <v-icon>{{ showmassage ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-                </v-btn>
-              </v-card-actions>
-
-              <v-expand-transition>
-               <div v-show="showmassage">
-                <v-divider></v-divider>
-
-                 <v-card-text >
-                    Lorem ipsum dolor sit amet, consectetur ad ipiscin elit. 
-                    Etiam vulputate augue vel felis gra vida porta. 
-                    Lorem ipsum dolor sit amet, cons ectetur adipiscing elit.
-                    Lorem ipsum dolor sit amet, consectetur ad ipiscin elit. 
-                    Etiam vulputate augue vel felis gra vida porta. 
-                    Lorem ipsum dolor sit amet, cons ectetur adipiscing elit.                 
-                 </v-card-text>
-                </div>
-              </v-expand-transition>
-            </v-card>
+    
+  </v-card>
           </v-col>
-          <v-col cols="12" md="4">
-            <v-card
-               class="mx-auto"
-               max-width="344"
-            >
-              <v-img
-                :src="require('@/assets/fisio4.jpg')"
+          <v-col cols="12" md="6">
+           <v-card
+    class="mx-auto"
+    max-width="419"
+    height="370px"
+
+  >
+     <v-img
+      class="white--text align-end"
+                :src="require('@/assets/ef_img_nov.jpg')"
                 height="200px"
               >
-              </v-img>
+              
+    </v-img>
+      <v-card-title  class="ml-2 pa-1">Enrich Life</v-card-title>
 
-              <v-card-title>
-                Reabilitação física
-              </v-card-title>
+    <v-card-text class="text--primary">
+      <div>Crie já a sua conta Enrich Life e tenha acesso a todo o conteúdo disponivel de voluntariado nacional e internacional!</div>
+    </v-card-text>
 
-              <v-card-subtitle>
-                1,000 miles of wonder
-              </v-card-subtitle>
-
-              <v-card-actions>
-                <v-btn
-                  color="orange lighten-2"
-                  text
-                >
-                  Saiba mais
-                </v-btn>
-
-                <v-spacer></v-spacer>
-
-                <v-btn
-                  icon
-                  @click="showrehabilitation = !showrehabilitation"
-                >
-                  <v-icon>{{ showrehabilitation ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-                </v-btn>
-              </v-card-actions>
-
-              <v-expand-transition>
-               <div v-show="showrehabilitation">
-                <v-divider></v-divider>
-
-                  <v-card-text>
-                    Lorem ipsum dolor sit amet, consectetur ad ipiscin elit. 
-                    Etiam vulputate augue vel felis gra vida porta. 
-                    Lorem ipsum dolor sit amet, cons ectetur adipiscing elit.
-                    Lorem ipsum dolor sit amet, consectetur ad ipiscin elit. 
-                    Etiam vulputate augue vel felis gra vida porta. 
-                    Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. 
-                 </v-card-text>
-                </div>
-              </v-expand-transition>
-            </v-card>
-          </v-col>
-          <v-col cols="12" md="4">
-            <v-card
-               class="mx-auto"
-               max-width="344"
-            >
-              <v-img
-                :src="require('@/assets/support3.jpg')"
-                height="200px"
-              >
-              </v-img>
-
-              <v-card-title>
-                Apoio ao cliente
-              </v-card-title>
-
-              <v-card-subtitle>
-                1,000 miles of wonder
-              </v-card-subtitle>
-
-              <v-card-actions>
-                <v-btn
-                  color="orange lighten-2"
-                  text
-                >
-                  Saiba mais
-                </v-btn>
-
-                <v-spacer></v-spacer>
-
-                <v-btn
-                  icon
-                  @click="showsupport = !showsupport"
-                >
-                  <v-icon>{{ showsupport ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
-                </v-btn>
-              </v-card-actions>
-
-              <v-expand-transition>
-               <div v-show="showsupport">
-                <v-divider></v-divider>
-
-                 <v-card-text>
-                    Lorem ipsum dolor sit amet, consectetur ad ipiscin elit. 
-                    Etiam vulputate augue vel felis gra vida porta. 
-                    Lorem ipsum dolor sit amet, cons ectetur adipiscing elit.
-                    Lorem ipsum dolor sit amet, consectetur ad ipiscin elit. 
-                    Etiam vulputate augue vel felis gra vida porta. 
-                    Lorem ipsum dolor sit amet, cons ectetur adipiscing elit. 
-                 </v-card-text>
-                </div>
-              </v-expand-transition>
-            </v-card>
+    
+  </v-card>
           </v-col>
         </v-row>
     </div>   
@@ -201,4 +90,7 @@
 #Services{
  background-color:WhiteSmoke;
 }
+
+
+
 </style>

@@ -4,37 +4,35 @@
     class="py-10 my-10"
   >
     <v-container >
-      <v-tabs id="servicemenu" class="display-3 mb-16">
-        <v-tab v-on:click="modal_1=true, modal_2=false, modal_3=false">Massagens</v-tab>
-        <v-tab v-on:click="modal_2=true, modal_1=false, modal_3=false">Reabiltação Física</v-tab>
-        <v-tab v-on:click="modal_3=true, modal_1=false, modal_2=false">Apoio ao cliente</v-tab>
-      </v-tabs>
+     
       <div id="vue">
         <div>
           <div class="c-modal" v-show="modal_1">
-          <base-info-card class="mb-6" title="Todas as nossas massagens" />
+          <base-info-card class="mb-6" title="Anúncios de voluntariado" />
           <v-row>
-            <v-col cols="3" v-for="massage in massages" :key="massage.id">
+            <v-col cols="4" v-for="advert in adverts" :key="advert.id">
               <v-card
                 class="mx-auto"
-                max-width="400"
-                min-height="410"
               >
                 <v-img
-                v-if="massage.upload"
+                v-if="advert.upload"
                   class="white--text align-end"
-                  height="200px"
-                  :src="massage.upload"
+                  height="250px"
+                  :src="advert.upload"
                 />
-                  <v-card-title>{{massage.title}}</v-card-title>
+                  <v-card-title>{{advert.title}}</v-card-title>
+                  <v-card-subtitle class="pb-0"> {{advert.companyName}}</v-card-subtitle>
                   <v-card-text class="text--primary">
-                    {{massage.shortDescription}}
+                   <v-icon small>
+                      mdi-map-marker
+                    </v-icon> {{advert.location}}
                   </v-card-text>
                   <v-card-actions>
+                      <v-spacer></v-spacer>
                     <v-btn
-                      color="orange"
+                      color="red accent-4"
                       text
-                      @click="goTodetail(massage.id)"
+                      @click="goTodetail(advert.id)"
                     >
                       Detalhes
                     </v-btn>
@@ -43,51 +41,10 @@
               </v-col>
             </v-row>
           </div>
-          <div class="bg" v-show="modal_1" v-on:click="modal_1=!modal_1"></div>
-        </div>
-        <div>
-          <div class="c-modal" v-show="modal_2">
-            <base-info-card class="mb-6" title="Todas as nossas reabilitações físicas" />
-            <v-row>
-              <v-col cols="3" v-for="rehabilitation in rehabilitations" :key="rehabilitation.id">
-                <v-card
-                  class="mx-auto"
-                  max-width="400"
-                  min-height="410"
-                >
-                
-                  <v-img
-                  v-if="rehabilitation.image"
-                    class="white--text align-end"
-                    height="200px"
-                    :src="rehabilitation.image"
-                  />
-                  <v-card-title>{{rehabilitation.title}}</v-card-title>
-                  <v-card-text class="text--primary" height="200px">
-                    <div>{{rehabilitation.shortDescription}}</div>
-                  </v-card-text>
-                  <v-card-actions>
-                    <v-btn
-                      color="orange"
-                      text
-                      @click="goTodetail(rehabilitation.id)"
-                    >
-                      Detalhes 
-                    </v-btn>
-                  </v-card-actions>
-                </v-card>
-              </v-col>
-            </v-row>
-          </div>
-          <div class="bg" v-show="modal_2" v-on:click="modal_2=!modal_2"></div>
-        </div>
-        <div>
-          <div class="c-modal" v-show="modal_3">
-              <!--aqq-->
-          </div>
-          <div class="bg" v-show="modal_3" v-on:click="modal_3=!modal_3"></div>
-        </div>
       </div>
+      </div>
+      
+      
     </v-container>
   </div>   
 </template>
@@ -95,15 +52,16 @@
 
 <script>
 import{ db, storage} from '@/firebase.js';
-
+//import BusinessInfo from '@/components/base/BusinessInfo.vue'
   export default {
     name: 'BaseHeading',
 
    // massId:this.$route.params.Pid,
-     
+   
 
     components: {
-      BaseInfoCard: () => import('@/components/base/InfoCard'),
+    //  BaseInfoCard: () => import('@/components/base/InfoCard'),
+      //'base-business-info': BusinessInfo,
     },
     data() {
       return{
@@ -115,13 +73,15 @@ import{ db, storage} from '@/firebase.js';
       modal_1: true,
       modal_2: false,
       modal_3: false,
-
+adverts:[],
+      cname:[],
       
       }
     },
     created() {
       try{
-        db.collection("massages").get().then((querySnapshot) => {
+
+        db.collection("internacional_volunteer").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
           if (doc.data().upload) {
             storage
@@ -129,48 +89,26 @@ import{ db, storage} from '@/firebase.js';
               .child(doc.data().upload)
               .getDownloadURL()
               .then((url) => {
-                this.massages.push({
+
+                db.collection("users").where('uid', '==', doc.data().companyID).get().then((querySnapshot) => {
+                  querySnapshot.forEach((finallydoc) =>{
+                    this.adverts.push({
                   id: doc.id,
                   title: doc.data().title,
-                  shortDescription: doc.data().shortDescription,
+                  companyName: finallydoc.data().username,
+                  location: doc.data().location,
                   upload: url,
+                  })
+                })
+                
                 })
               })
           } else {
-            this.massages.push({
+            this.adverts.push({
               id: doc.id,
-              title: doc.data().title,
-              shortDescription: doc.data().shortDescription,
-            })
-          }
 
-          // end pertinent change
-        })
-      })
-    }catch(e){
-      console.log(e)
-    }
-    try{
-        db.collection("rehabilitations").get().then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-          if (doc.data().upload) {
-            storage
-              .ref ()
-              .child(doc.data().upload)
-              .getDownloadURL()
-              .then((url) => {
-                this.rehabilitations.push({
-                  id: doc.id,
                   title: doc.data().title,
-                  shortDescription: doc.data().shortDescription,
-                  image: url,
-                })
-              })
-          } else {
-            this.rehabilitations.push({
-              id: doc.id,
-              title: doc.data().title,
-              shortDescription: doc.data().shortDescription,
+                  location: doc.data().location,
             })
           }
 
@@ -180,6 +118,9 @@ import{ db, storage} from '@/firebase.js';
     }catch(e){
       console.log(e)
     }
+
+          // end pertinent change
+
     },
 
     props: {

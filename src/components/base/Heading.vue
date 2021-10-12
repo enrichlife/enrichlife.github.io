@@ -1,4 +1,4 @@
-<template v-slot:activator="{ on, attrs }">
+<template v-slot:activator="{ on, attrs }"> 
   <component
     :is="tag"
     :class="classes"

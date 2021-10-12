@@ -1,7 +1,7 @@
 
 <template>
   <v-app>
-      <v-content>
+      <v-main>
           <v-container class="fill-height" fluid>
             <v-row align="center" justify="center">
                 <v-col cols="12" sm="4" md="4">
@@ -9,12 +9,12 @@
                         <v-card-text class="pa-7 mt-12">
                             <v-row>
                                 <v-col cols="12" md="8">
-                                    <router-link to="/">
-                                        <v-img  max-width="230px" src="/logo.png" > </v-img>
+                                    <router-link to="/biensaude">
+                                        <v-img  max-width="230px" src="/EFLogo.png" > </v-img>
                                     </router-link>
                                 </v-col>
                             </v-row>
-                            <h2 class="text-center mt-10 mb-5">Inicie sessão na sua conta BienSaude</h2>
+                            <h2 class="text-center mt-10 mb-5">Inicie sessão na sua conta EnrichLife</h2>
                             <div class="text-center mb-4">
                                 Não tem uma conta? 
                                 <router-link to="/register">
@@ -43,7 +43,7 @@
                                 ></v-text-field>
                             </v-form>
                             <div class="text-center my-7">
-                            <v-btn color="primary"  :disabled="!valid" id="custom-disabled" @click="login"> SIGN IN</v-btn>
+                            <v-btn color="primary"  :disabled="!valid" id="custom-disabled" @click="login"> ENTRAR </v-btn>
                             </div>
                             <div>
                                 <div class="text-center primary--text text-decoration-underline" href="#four">
@@ -55,13 +55,13 @@
                 </v-col>
             </v-row>
           </v-container>
-      </v-content>
+      </v-main>
   </v-app>
 </template>
 <script>
 
 //import firebase from '../firebase';
-import {fb} from '@/firebase.js';
+import {fb, db} from '@/firebase.js';
 
 export default {
 
@@ -88,10 +88,23 @@ export default {
     methods: {
 
         login(){
-            fb.auth().signInWithEmailAndPassword(this.email, this.password)
-           .then(() => {
-               
-                this.$router.replace('user/inicio')
+            fb.auth().signInWithEmailAndPassword(this.email, this.password).then(() => {
+                const currentUser = fb.auth().currentUser
+                var docRef = db.collection("users").doc(currentUser.uid);
+
+                docRef.get().then((doc) => {
+                    
+                    if(doc.data().type == "Particular"){
+                        this.$router.replace('user/inicio')
+                        console.log(doc.data().type);
+                    }
+                    else if(doc.data().type == "Organização"){
+                        this.$router.replace('admin/adverts')
+                        console.log(doc.data().type);
+                    }
+                    
+                })
+                              
                 
             }).catch(function(error) {
                 // Handle Errors here.

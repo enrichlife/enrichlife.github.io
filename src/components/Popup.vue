@@ -43,7 +43,7 @@
 
 
 <script>
-import db from '@/firebase.js'
+
   export default {
     data: () => ({
       date: new Date().toISOString().substr(0, 10),
@@ -63,19 +63,9 @@ import db from '@/firebase.js'
         if(this.$refs.form.validate()){
           this.loading = true;
           
-          const project = {
-            title: this.title,
-            content: this.content,
-            date: this.date,
-            person: 'The Net Ninja',
-            status: 'ongoing'
-          }
+         
 
-          db.collection('projects').add(project).then(() => {
-            this.loading = false;
-            this.dialog = false;
-            this.$emit('projectAdded')
-          })
+          
         }
       }
     }

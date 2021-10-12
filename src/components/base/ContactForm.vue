@@ -7,18 +7,20 @@
       color="primary"
     />
 
-    <base-text-field label="Name" />
+    <base-text-field label="Name" v-model="name"/>
 
-    <base-text-field label="Email" />
+    <base-text-field label="Email" v-model="email"/>
 
-    <base-text-field label="Subject" />
+    <base-text-field label="Subject" v-model="subject"/>
 
     <base-textarea
       class="mb-6"
       label="Menssagem"
+      v-model="message"
     />
 
     <base-btn
+    @click="sendemail" 
     >
       Enviar Menssagem
     </base-btn>

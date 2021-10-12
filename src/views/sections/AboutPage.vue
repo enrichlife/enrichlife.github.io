@@ -1,74 +1,70 @@
 <template>
     <div 
-      id="about-page"  
-      class="py-10 my-10"
+      id="about-page" 
     >
       <v-container>
-        
-        <p>Com o objetivo de ajudar os utentes resolvemos criar o centrosdesaude.pt, uma plataforma online que reúne uma lista de centros de saúde do distrito de Lisboa.
-O nosso motor de busca interativo permite-lhe ver quais os centros de saúde que tem disponível na região onde se encontra e ainda aceder aos seus contactos.
-A gestão desta página está a cargo da Angry Ventures, no entanto não poderá ser responsabilizada pela informação divulgada.</p>
-        <h2 
-          class="mb-6 mt-12 text-center"
-          >
-            O que pode encontrar no Centros de Saúde.pt
-        </h2>
-        <p>
-          Precisamente porque sabemos que nem sempre é fácil encontrar respostas para as suas questões sobre centros de saúde e cuidados de saúde em geral, quisemos juntar tudo nesta plataforma.
-Aqui, pode não só encontrar um perfil para cada centro de saúde, com informações e contactos, como pode saber a opinião de outros utentes sobre o serviço e condições e ainda deixar o seu comentário sobre a sua experiência.
-Para além disto, pode encontrar respostas a perguntas frequentes sobre cuidados de saúde, e manter-se informado com dicas e alertas através do nosso blog.
-Para se manter informado sobre tudo o que a ver com cuidados de saúde, não precisa de sair da nossa plataforma:
-        </p>
-
-        <v-parallax  class="py16" src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"></v-parallax>
-
-        <h2 
-          class="mb-6 pt-16 text-center"
-          >
-            O que pode encontrar no Centros de Saúde.pt
-        </h2>
-        <p>
-          Precisamente porque sabemos que nem sempre é fácil encontrar respostas para as suas questões sobre centros de saúde e cuidados de saúde em geral, quisemos juntar tudo nesta plataforma.
-Aqui, pode não só encontrar um perfil para cada centro de saúde, com informações e contactos, como pode saber a opinião de outros utentes sobre o serviço e condições e ainda deixar o seu comentário sobre a sua experiência.
-Para além disto, pode encontrar respostas a perguntas frequentes sobre cuidados de saúde, e manter-se informado com dicas e alertas através do nosso blog.
-Para se manter informado sobre tudo o que a ver com cuidados de saúde, não precisa de sair da nossa plataforma:
-        </p>
+      <!--  <div class="saying py-16 mb-16">
+          <v-card elevation="8" class="text-center mx-auto"
+          max-width="819px"
+>
+            <v-icon x-large color="green">
+              mdi-chart-line
+            </v-icon>
+          </v-card>
+        </div>
+-->
+      <div
+        id="services"  
+        class="py-16 ma-16">
 
 
-        <h2 
-          class="text-center py-10 mt-10"
+        <v-heading 
+          :is="tag"
+          class="display-1 v-heading mb-14 text-center"
           >
-            Galeria
-        </h2>
-        <v-row>
-    <v-col
-      v-for="n in 9"
-      :key="n"
-      class="d-flex child-flex"
-      cols="4"
-    >
-      <v-img
-        :src="`https://picsum.photos/500/300?image=${n * 5 + 10}`"
-        :lazy-src="`https://picsum.photos/10/6?image=${n * 5 + 10}`"
-        aspect-ratio="1"
-        class="grey lighten-2"
-      >
-        <template v-slot:placeholder>
-          <v-row
-            class="fill-height ma-0"
-            align="center"
-            justify="center"
-          >
-            <v-progress-circular
-              indeterminate
-              color="grey lighten-5"
-            ></v-progress-circular>
-          </v-row>
-        </template>
-      </v-img>
-    </v-col>
-  </v-row>
-      </v-container>
+            Sobre Nós
+        </v-heading>
+
+        <p>O projeto pretende focar-se nos inúmeros objetivos para o 
+          desenvolvimento sustentável das Nações Unidas.
+           A Enrich Life é uma rede social de voluntariado eletrónico 
+           virada para mobile que será dividida em duas partes essenciais,
+            a área da rede social e a do voluntariado eletrónico
+            .A rede social irá servir para os utilizadores partilharem 
+            experiências vividas em projetos de voluntariado internacionais e nacionais. 
+            Por exemplo, um utilizador foi a África fazer um voluntariado internacional e 
+            gostou de ficar hospedado num hotel das redondezas, desta forma poderá partilhar 
+            a experiência com toda a comunidade Enrich Life, de futuro, os utilizadores terão 
+            as indicações essenciais sobre esse mesmo hotel. Na área do voluntariado eletrónico 
+            constarão anúncios de voluntariados nacionais e, consequentemente, o utilizador que 
+            se interessar por um voluntariado específico, responde ao anúncio enviando assim uma
+             mensagem privada ao organizador. Para a aplicação funcionar com sucesso e tornar-se num
+              ciclo de voluntariado, criei o sistema “DAR PARA RECEBER”, onde para receber algo tem
+               que se dar algo em troca. Ou seja, este sistema permite que um utilizador crie um projeto
+                de voluntariado na aplicação e possa juntar pessoas para por exemplo uma ida à praia apanhar lixo,
+                 ou para levar as compras a casa de um idoso. Nos tempos que correm, simples ações como estas são
+                  bastante importantes, como ir à farmácia comprar medicamentos, pois sabemos que sair de casa nesta
+                   faixa etária é perigoso e acarreta dificuldades. Deste  modo, todos podem receber algo em troca
+                    de forma voluntária, o que tornaria a aplicação mais dinâmica, pois seria um DAR para poder 
+                    RECEBER. Sem dúvida que, para o meu sistema funcionar, têm de existir utilizadores honestos 
+                    e com ideais bem definidos no que diz respeito a voluntariados, mas vou partir do bom senso 
+                    dos mesmos, acreditando que estão dispostos a doar um pouco do seu tempo em nome de uma boa 
+                    causa. Não vivemos sozinhos neste mundo, se todos disponibilizarmos um pouco do nosso tempo, 
+                    poderemos ter um mundo bem melhor.Por vezes, os jovens, e não só, não têm acesso a estes eventos,
+                     assim poderão vir a interessar-se pelos mesmos que a nível individual são também bastante enriquecedores. 
+                     Penso que cada um de nós pode despender algumas horas para ajudar o próximo.
+                     No caso específico do voluntariado internacional não seriam apenas algumas horas, 
+                     mas no âmbito de aproveitar as férias para ajudar e apoiar alguns países. 
+                     “Ser voluntário é ajudar gratuitamente alguém sem custos para investir em um mundo melhor.” 
+                     Fagner Gouveia Espero envolver cada vez mais pessoas numa causa para o bem comum da humanidade. 
+                     Através do DAR PARA RECEBER consegue-se cada vez mais ter um círculo maior de pessoas que realizem 
+                     voluntariados e que utilizem esta aplicação, vendo nela uma ferramenta importante na rede dos 
+                     voluntariados. A Enrich Life destina-se a todas as pessoas que demonstram vontade em disponibilizar 
+                     um pouco do seu tempo e das suas competências a uma causa, de forma voluntária,
+           mas que nem sempre conseguem encontrar as melhores oportunidades.</p>
+</div>
+</v-container>
+  
     </div>   
   
 </template>
@@ -76,7 +72,7 @@ Para se manter informado sobre tudo o que a ver com cuidados de saúde, não pre
 
 
 <script>
-  export default {
+ export default {
     name: 'AbouPage',
     
     props: {
@@ -92,6 +88,9 @@ Para se manter informado sobre tudo o que a ver com cuidados de saúde, não pre
 
 h2{
   font-size: 35px;
-  
+}
+
+#history{
+  background-color: #fafafa;
 }
 </style>

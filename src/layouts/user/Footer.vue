@@ -13,6 +13,8 @@
           md="6"
         >
           <div class="d-flex flex-wrap justify-md-start justify-center justify-md-none">
+           
+           
             <template v-for="(s, i) in social">
               <a
                 :key="s"
@@ -30,6 +32,9 @@
                 <v-divider vertical />
               </v-responsive>
             </template>
+            
+
+
           </div>
         </v-col>
 

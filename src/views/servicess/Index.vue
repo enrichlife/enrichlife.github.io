@@ -14,7 +14,7 @@
 
     mixins: [
       LoadSections([
-        'hero-alt',
+        'hero-alt-adverts',
         'testmassage'
       ]),
     ],

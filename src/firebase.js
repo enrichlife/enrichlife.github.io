@@ -4,14 +4,16 @@ import 'firebase/storage'
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDOP0DTTzllcK2wXNWTcje75wDtkGBCF7E",
-  authDomain: "pap-escola-b9c0f.firebaseapp.com",
-  databaseURL: "https://pap-escola-b9c0f.firebaseio.com",
-  projectId: "pap-escola-b9c0f",
-  storageBucket: "pap-escola-b9c0f.appspot.com",
-  messagingSenderId: "93823508104",
-  appId: "1:93823508104:web:94dfbb14c9d74412fc493d"
-  };
+  apiKey: "AIzaSyByXUva5C7fyOyrj_gCCtIxo8s4wiL58uE",
+  authDomain: "enrichlifepap.firebaseapp.com",
+  databaseURL: "https://enrichlifepap-default-rtdb.firebaseio.com",
+  projectId: "enrichlifepap",
+  storageBucket: "enrichlifepap.appspot.com",
+  messagingSenderId: "818829868579",
+  appId: "1:818829868579:web:839128b3e4ff3e9376bb96"
+};
+
  export const fb = firebase.initializeApp(firebaseConfig);
- export const db = firebase.firestore()
- export const storage = firebase.storage()
+ export const db = firebase.firestore();
+ export const storage = firebase.storage();
+ 

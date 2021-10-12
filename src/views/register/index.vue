@@ -9,18 +9,13 @@
                         <v-card-text class="pa-7 mt-12">
                             <v-row>
                                 <v-col cols="12" md="8">
-                                    <router-link to="/">
-                                        <v-img  max-width="230px" src="/logo.png" > </v-img>
+                                    <router-link to="/biensaude">
+                                        <v-img  max-width="230px" src="/EFLogo.png" > </v-img>
                                     </router-link>
                                 </v-col>
                             </v-row>
-                            <h2 class="text-center mt-10 mb-5">Criar uma nova conta BienSaúde</h2>
-                            <div class="text-center mb-4">
-                                Já tem uma conta? 
-                                <router-link to="/login">
-                                    <a class="primary--text text-decoration-underline" >Entrar</a> 
-                                </router-link>
-                            </div>
+                            <h2 class="text-center mt-10 mb-5">Criar uma nova conta EnrichLife</h2>
+                            
                             
                              <div class="text-center ">
                                 <v-avatar 
@@ -38,11 +33,7 @@
                             </div>
 
                             <div class="text-center mt-2">
-                                <v-btn  
-                                    color="primary" 
-                                    raised 
-                                    @click="onPickFile"
-                                >Carregar imagem</v-btn>
+                               
 
                                 <input 
                                     type="file" 
@@ -57,84 +48,22 @@
                                 <v-row>
                                     <v-col
                                     cols="12"
-                                    md="6"
+                                    md="12"
                                     >
                                         <v-text-field
-                                        v-model="firstname"
+                                        v-model="username"
                                         :rules="nameRules"
                                         required
-                                        label="Primeiro nome"
+                                        label="Nome"
                                         name="Nome"
                                         type="text"
                                         prepend-icon="person"
                                         color="primary"
                                         />
                                     </v-col>
-                                    <v-col
-                                    cols="12"
-                                    md="6"
-                                    >    
-                                        <v-text-field
-                                        v-model="lastname"
-                                        :rules="nameRules"
-                                        required
-                                        label="Sobrenome"
-                                        name="Sobrenome"
-                                        prepend-icon="person"
-                                        type="text"
-                                        color="primary"/>
-                                    </v-col>
+                                 
                                 </v-row>
-                            
 
-                                <v-menu
-                                    ref="menu"
-                                    v-model="menu"
-                                    :close-on-content-click="false"
-                                    transition="scale-transition"
-                                    offset-y
-                                    min-width="auto"
-                                >
-                                    <template v-slot:activator="{ on, attrs }">
-                                   
-
-                                    <v-text-field
-                                        
-                                        v-model="dateFormatted"
-                                        label="Data de nascimento"
-                                        prepend-icon="mdi-calendar"
-                                        :rules="[rules.required]"
-                                        readonly
-                                        v-bind="attrs"
-                                        v-on="on"
-                                    ></v-text-field>
-                                    </template>
-                                    <v-date-picker
-                                    ref="picker"
-                                    v-model="date"
-                                    hint="MM/DD/YYYY formato"
-                                    no-title
-                                    :max="new Date().toISOString().substr(0, 10)"
-                                    min="1950-01-01"
-                                    @change="save"
-                                    ></v-date-picker>
-                                </v-menu>
-                                    <v-radio-group
-                                    prepend-icon="mdi-gender-male-female"
-                                    v-model="row"
-                                    row
-                                    :rules="[rules.required]"
-                                    class="mt-1"
-                                    >
-                                    <v-radio
-                                        label="Mascilino"
-                                        value="Masculino"
-                                    ></v-radio>
-                                    <v-radio
-                                        label="Femenino"
-                                        value="Feminino"
-                                    ></v-radio>
-                                    </v-radio-group>
                                 <v-text-field
                                 v-model="email"
                                 label="Email"
@@ -168,10 +97,17 @@
                                 label="Digite novamente a password"
                                 @click:append="show1 = !show1"
                                 ></v-text-field>
+                                <div class="text-center mt-4">
+                                Já tem uma conta? 
+                                <router-link to="/login">
+                                    <a class="primary--text text-decoration-underline" >Entrar</a> 
+                                </router-link>
+                            </div>
                             </v-form>
-                            <div class="text-center my-7">
+                            <div class="text-center mb-7">
                             <v-btn  color="primary" :disabled="!valid" id="custom-disabled" @click="register" >REGISTAR</v-btn>
                             </div>
+                            
                         </v-card-text>   
                     </v-card>
                 </v-col>
@@ -196,14 +132,13 @@ export default {
         rePassword: '',
         imageUrl: '',
         image: null,
-        firstname: '',
-        lastname: '',
+        username: '',
         dateFormatted: null,
         row: '',
         email: '',
+        isNinja: true,
         
-        menu1: false,
-        menu2: false,
+        
 
         nameRules: [
             v => !!v || 'Nome é obrigatório',
@@ -271,41 +206,51 @@ export default {
       const [month, day, year] = date.split('/')
       return `${day.padStart(2, '0')}-${month.padStart(2, '0')}-${year}`
     },
-
-      register(){
-          fb.auth().createUserWithEmailAndPassword(this.email, this.password)
-                .then((user) => {
+   
+   
     
-                const fileRef = "users/"+user.user.uid+"/profile.jpg"
-                storage.ref(fileRef).put(this.image)
+    register(){
+                    
 
-                    db.collection("profiles").doc(user.user.uid).set({
-                        name: this.firstname,
-                        surname: this.lastname,
-                        birth: this.dateFormatted,
-                        gender: this.row,
-                        id: user.user.uid,
-                        email: this.email,
-                    })
-                    .then(function() {
-                        console.log("Document successfully written!");
-                    })
-                    .catch(function(error) {
-                        console.error("Error writing document: ", error);
-                    });
+        fb.auth().createUserWithEmailAndPassword(this.email, this.password).then((user) => {
+    
+           const fileRef = "/avatars/"+user.user.uid
+            storage.ref(fileRef).put(this.image)
 
-                    this.$router.replace('login')
+             const userphoto = storage.ref().child("/avatars/"+user.user.uid) .getDownloadURL();
+             console.log(userphoto);
+  
+                
+                  
+                        db.collection("users").doc(user.user.uid).set({
+                            username: this.username,
+                            type: "Organização",
+                            uid: user.user.uid,
+                            email: this.email,
+                            avatar: userphoto, 
+
+                        })
+                        .then(function() {
+                            console.log("Registado como Organização");
+                        })
+                        .catch(function(error) {
+                            console.error("Error writing document: ", error);
+                        });
+
+                        this.$router.replace('login')
+                 
+
                 })
-                .catch(function(error) {
-                    // Handle Errors here.
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    if (errorCode == 'auth/weak-password') {
-                        alert('A palavra-passe é demasiado fraca.');
-                    } else {
-                        alert(errorMessage);
-                    }
-                    console.log(error);
+        .catch(function(error) {
+            // Handle Errors here.
+            var errorCode = error.code;
+            var errorMessage = error.message;
+            if (errorCode == 'auth/weak-password') {
+                alert('A palavra-passe é demasiado fraca.');
+            } else {
+                alert(errorMessage);
+            }
+            console.log(error);
         });
 
       },
