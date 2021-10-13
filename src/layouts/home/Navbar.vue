@@ -37,10 +37,11 @@
     </div>-->
      <nav >
       <v-app-bar app clipped-left >
-        <v-app-bar-nav-icon  @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon  v-show="!mobile" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         <v-toolbar-title class="text-uppercase grey--text">
-          <span class="font-weight-light">enrich</span>
-          <span>life</span>
+           <router-link to="/enrichlife">
+              <v-img max-width="230px" height="100%" src="/EFLogo.png" > </v-img>
+            </router-link>
         </v-toolbar-title>
         
       </v-app-bar>
@@ -106,67 +107,6 @@
           </v-list-item-group>
           <!---->
 
-         <!---MARCAÇÃO-->
-          <v-subheader>Consultas</v-subheader>
-          <v-list-item-group
-            v-model="selectedItem"
-            color="primary"
-          >
-            <v-list-item
-              v-for="(bookings, i) in bookings"
-              :key="i"
-              router :to="bookings.route"
-            >
-              <v-list-item-icon>
-                <v-icon v-text="bookings.icon"></v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title v-text="bookings.text"></v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list-item-group>
-          
-
-         
-
-
-
-          <!--GESTÃO DE CONTA -->
-          <v-subheader>GESTÃO DE CONTA</v-subheader>
-          <v-list-item-group
-            v-model="selectedItem"
-            color="primary"
-          >
-            <v-list-item
-              v-for="(account, i) in account"
-              :key="i"
-              router :to="account.route"
-            >
-              <v-list-item-icon>
-                <v-icon v-text="account.icon"></v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title v-text="account.text"></v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list-item-group>
-
-
-<v-spacer></v-spacer>
-          <v-list-item-group
-            color="primary"
-            class="end"
-          >
-            <v-list-item @click="logout">
-              <v-list-item-icon>
-                <v-icon>logout</v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title>Terminar sessão</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list-item-group>
-
         </v-list>
       
       </v-navigation-drawer>
@@ -182,23 +122,8 @@ export default {
 
           
             drawer:false,
-            selectedItem: 1,
 
- bookings: [
-              { text: 'Solicitações', icon: 'history', route:'requests' },
-              { text: 'Histórico de Consulas', icon: 'history', route:'queryhistory' },
-            ],
-            
-            services: [
-              { text: 'Massagem', icon: 'spa', route:'/team' },
-              { text: 'Reabilitação Física', icon: 'fitness_center', route:'/' },
-            ],
-
-            account:[
-              { text: 'Perfil', icon: 'mdi-account', route:'/user/profile' },
-            ],
             tabs: null,
-            snackbar: true,
              items: [
              'Início',
               'Sobre',

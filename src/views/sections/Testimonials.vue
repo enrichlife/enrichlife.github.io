@@ -1,5 +1,7 @@
 <template>
-    <div 
+<v-row>
+  <v-col cols="12" md="12">
+<div 
       id="services"  
       class="py-16 ma-16"
     >
@@ -15,9 +17,8 @@
           
           <v-col cols="12" md="6">
           <v-card
-    class="mx-auto ci"
+    class="mx-auto"
     elevation="12"
-    min-width="400"
     
   >
    
@@ -51,7 +52,10 @@ Não vivemos sozinhos neste mundo, se todos disponibilizarmos um pouco do nosso 
           </v-col>
          
         </v-row>
-    </div>   
+    </div>  
+  </v-col>
+</v-row>
+     
   
 </template>
 

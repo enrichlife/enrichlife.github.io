@@ -1,5 +1,5 @@
 <template>
-  <v-main >
+  <v-main class=" pl-0">
     <v-fade-transition mode="out-in">
       <router-view />
     </v-fade-transition>
