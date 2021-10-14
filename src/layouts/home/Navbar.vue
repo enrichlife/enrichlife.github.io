@@ -74,10 +74,10 @@
         <v-list-item-group color="primary">
           <v-list-item :to="{ path: '/sobre', name: 'Sobre' }">
             <v-list-item-icon>
-              <v-icon>spa</v-icon>
+              <v-icon>mdi-handshake </v-icon>
             </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title>Sobre</v-list-item-title>
+              <v-list-item-title>Sobre Nós</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list-item-group>
@@ -87,25 +87,14 @@
         <v-list-item-group color="primary">
           <v-list-item :to="{ path: '/Services', name: 'Serviços' }">
             <v-list-item-icon>
-              <v-icon>fitness_center</v-icon>
+              <v-icon>mdi-hand-heart </v-icon>
             </v-list-item-icon>
             <v-list-item-content>
-              <v-list-item-title>Serviços</v-list-item-title>
+              <v-list-item-title>Anúncios</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
         </v-list-item-group>
         <!---->
-
-        <v-list-item-group color="primary" v-show="!mobile">
-          <v-list-item :to="{ path: '/sobre', name: 'Sobre' }">
-            <v-list-item-icon>
-              <v-icon>spa</v-icon>
-            </v-list-item-icon>
-            <v-list-item-content>
-              <v-list-item-title>Sobre</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list-item-group>
       </v-list>
     </v-navigation-drawer>
   </nav>
