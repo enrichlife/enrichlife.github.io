@@ -1,0 +1,21 @@
+[debug] [2021-10-13T08:48:28.248Z] ----------------------------------------------------------------------
+[debug] [2021-10-13T08:48:28.251Z] Command:       C:\Program Files (x86)\node.exe C:\Users\Aluno365\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-10-13T08:48:28.251Z] CLI Version:   9.20.0
+[debug] [2021-10-13T08:48:28.251Z] Platform:      win32
+[debug] [2021-10-13T08:48:28.251Z] Node Version:  v12.18.2
+[debug] [2021-10-13T08:48:28.252Z] Time:          Wed Oct 13 2021 09:48:28 GMT+0100 (GMT+01:00)
+[debug] [2021-10-13T08:48:28.252Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-10-13T08:48:28.261Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-10-13T08:48:28.261Z] > authorizing via signed-in user (fabioramos10h@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\Aluno365\Desktop\EnrichLife
+
