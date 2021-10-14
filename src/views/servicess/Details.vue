@@ -10,7 +10,7 @@
         elevation="14"
         type="success"
       >
-        Inscrição realizada com sucesso !
+        Inscrição realizada com sucesso!
       </v-alert>
 
       <div class="details"></div>
