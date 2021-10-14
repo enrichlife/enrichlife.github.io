@@ -37,9 +37,9 @@
     </div>-->
      <nav >
       <v-app-bar app clipped-left >
-        <v-app-bar-nav-icon  v-show="!mobile" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon  @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         <v-toolbar-title class="text-uppercase grey--text">
-           <router-link to="/enrichlife">
+           <router-link to="/">
               <v-img max-width="230px" height="100%" src="/EFLogo.png" > </v-img>
             </router-link>
         </v-toolbar-title>
@@ -64,12 +64,12 @@
             color="primary"
           >
           
-              <v-list-item :to="{path: '/admin', name: 'adverts'}">
+              <v-list-item :to="{path: '/', name: ''}">
                 <v-list-item-icon>
                   <v-icon>home</v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
-                  <v-list-item-title>Anúncios</v-list-item-title>
+                  <v-list-item-title>Início</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
           </v-list-item-group>
@@ -80,12 +80,12 @@
             color="primary"
           >
           
-              <v-list-item :to="{path: '/admin', name: 'insertadverts'}">
+              <v-list-item :to="{path: '/sobre', name: 'Sobre'}">
                 <v-list-item-icon>
                   <v-icon>spa</v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
-                  <v-list-item-title>Adicionar Anúncio</v-list-item-title>
+                  <v-list-item-title>Sobre</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
           </v-list-item-group>
@@ -96,12 +96,12 @@
             color="primary"
           >
           
-              <v-list-item :to="{path: '/admin', name: 'myadverts'}">
+              <v-list-item :to="{path: '/Services', name: 'Serviços'}">
                 <v-list-item-icon>
                   <v-icon>fitness_center</v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
-                  <v-list-item-title>Meus Anúncios</v-list-item-title>
+                  <v-list-item-title>Serviços</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
           </v-list-item-group>

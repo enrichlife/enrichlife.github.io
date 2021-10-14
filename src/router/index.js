@@ -26,7 +26,7 @@ const router = new VueRouter({
     },
 
     {
-      path: '/enrichlife',
+      path: '/',
       component: () => import('@/layouts/home/Index.vue'),
       children: [
         {

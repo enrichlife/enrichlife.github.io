@@ -22,25 +22,37 @@
     
   >
    
-    <v-card-text class=" comment" >
+    <v-card-text class=" comment grow d-flex flex-wrap justify-md-start justify-center " >
 Não vivemos sozinhos neste mundo, se todos disponibilizarmos um pouco do nosso tempo, poderemos ter um mundo bem melhor.    </v-card-text>
 
-    <v-card-actions>
-      <v-list-item class="grow">
-        <v-list-item-avatar class="text--center" color=" grey darken-3">
+    <v-card-actions class="text--center">
+      <v-row>
+        <v-col cols="12">
+          <div class="grow  d-flex flex-wrap justify-md-start justify-center " >
+          <v-list-item-avatar class="text--center" color=" grey darken-3">
           <v-img
-            class="elevation-6"
+            class="elevation-6 text--center"
             alt=""
             src="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
           ></v-img>
         </v-list-item-avatar>
-
-        <v-list-item-content>
-          <v-list-item-title>Afonso Macedo, CEO/Founder</v-list-item-title>
-        </v-list-item-content>
+        
+     
 
         
-      </v-list-item>
+
+        
+      </div>
+        </v-col>
+        <v-col cols="12">
+          <div class="grow d-flex flex-wrap justify-md-start justify-center ">
+
+          <p class="grow d-flex flex-wrap justify-md-start justify-center " >Afonso Macedo</p>
+          <p class="grow d-flex flex-wrap justify-md-start justify-center " >CEO/Founder</p>
+      </div>
+        </v-col>
+      </v-row>
+      
       
 
         
@@ -105,5 +117,8 @@ Não vivemos sozinhos neste mundo, se todos disponibilizarmos um pouco do nosso 
     font-weight: 300;
     font-size: 40px;
     line-height: 50px;
+}
+.r{
+  width: 100%;
 }
 </style>

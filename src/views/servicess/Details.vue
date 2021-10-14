@@ -2,11 +2,12 @@
   <div class="details">
     <div v-for="(advert,index) in adverts" :key="index">
       <div class="col-md-12" v-if="massId == advert.id">
-        <div class="mx-14">
+        <div class="">
           <v-row no-gutters>
             <v-col
                 cols="12"
                 md="7"
+                sm="12"
                 class="pa-2"
               >
                 <img 
@@ -383,7 +384,6 @@ age:'',
   text-align: left;
   background-color: white;
   width: 100%;
-  height: 75%;
   max-height: 500px;
 }
 

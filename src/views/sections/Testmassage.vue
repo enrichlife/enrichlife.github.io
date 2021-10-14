@@ -10,7 +10,7 @@
           <div class="c-modal" v-show="modal_1">
           <base-info-card class="mb-6" title="Anúncios de voluntariado" />
           <v-row>
-            <v-col cols="4" v-for="advert in adverts" :key="advert.id">
+            <v-col sm="12" md="4" v-for="advert in adverts" :key="advert.id">
               <v-card
                 class="mx-auto"
               >
